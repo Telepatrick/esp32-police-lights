@@ -1,8 +1,10 @@
 #include <Arduino.h>
 
-#define RED_LED_OUT 15
-#define WHITE_LED_OUT 16
-#define BLUE_LED_OUT 17
+constexpr uint8_t RED_LED_OUT = 15;
+constexpr uint8_t WHITE_LED_OUT = 16;
+constexpr uint8_t BLUE_LED_OUT = 17;
+constexpr uint16_t FAST_BLINK = 50;
+constexpr uint16_t SLOW_BLINK = 200;
 
 void setup() {
     pinMode(RED_LED_OUT, OUTPUT);
@@ -10,8 +12,8 @@ void setup() {
     pinMode(BLUE_LED_OUT, OUTPUT);
 }
 
-void handleBlinking(int ledOut, int endDelay) {
-  for(int i = 0; i < 3; i++) {
+void handleBlinking(uint8_t ledOut, uint16_t endDelay) {
+  for(uint8_t i = 0; i < 3; i++) {
     digitalWrite(ledOut, HIGH);
     delay(100);
     digitalWrite(ledOut, LOW);
@@ -20,7 +22,7 @@ void handleBlinking(int ledOut, int endDelay) {
 }
 
 void loop() {
-  handleBlinking(RED_LED_OUT, 50);
-  handleBlinking(WHITE_LED_OUT, 200);
-  handleBlinking(BLUE_LED_OUT, 50);
+  handleBlinking(RED_LED_OUT, FAST_BLINK);
+  handleBlinking(WHITE_LED_OUT, SLOW_BLINK);
+  handleBlinking(BLUE_LED_OUT, FAST_BLINK);
 }
