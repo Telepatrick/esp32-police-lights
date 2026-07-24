@@ -10,29 +10,17 @@ void setup() {
     pinMode(BLUE_LED_OUT, OUTPUT);
 }
 
+void handleBlinking(int ledOut, int endDelay) {
+  for(int i = 0; i < 3; i++) {
+    digitalWrite(ledOut, HIGH);
+    delay(100);
+    digitalWrite(ledOut, LOW);
+    delay(endDelay);
+  }
+}
+
 void loop() {
-  for(int i = 0; i< 3; i++) {
-    digitalWrite(BLUE_LED_OUT, HIGH);
-    digitalWrite(RED_LED_OUT, LOW);
-    delay(100);
-    digitalWrite(BLUE_LED_OUT, LOW);
-    digitalWrite(RED_LED_OUT, LOW);
-    delay(50);
-  }
-
-  for(int i = 0; i< 3; i++) {
-    digitalWrite(RED_LED_OUT, HIGH);
-    digitalWrite(BLUE_LED_OUT, LOW);
-    delay(100);
-    digitalWrite(BLUE_LED_OUT, LOW);
-    digitalWrite(RED_LED_OUT, LOW);
-    delay(50);
-  }
-
-  for(int i = 0; i< 3; i++) {
-    digitalWrite(WHITE_LED_OUT, HIGH);
-    delay(100);
-    digitalWrite(WHITE_LED_OUT, LOW);
-    delay(200);
-  }
+  handleBlinking(RED_LED_OUT, 50);
+  handleBlinking(WHITE_LED_OUT, 200);
+  handleBlinking(BLUE_LED_OUT, 50);
 }
