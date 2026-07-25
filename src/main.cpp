@@ -3,8 +3,8 @@
 constexpr uint8_t RED_LED_OUT = 15;
 constexpr uint8_t WHITE_LED_OUT = 16;
 constexpr uint8_t BLUE_LED_OUT = 17;
-constexpr uint16_t FAST_BLINK = 50;
-constexpr uint16_t SLOW_BLINK = 200;
+constexpr uint8_t FAST_BLINK = 50;
+constexpr uint8_t SLOW_BLINK = 200;
 
 void setup() {
     pinMode(RED_LED_OUT, OUTPUT);
@@ -12,7 +12,7 @@ void setup() {
     pinMode(BLUE_LED_OUT, OUTPUT);
 }
 
-void handleBlinking(uint8_t ledOut, uint16_t endDelay) {
+void handleBlinking(uint8_t ledOut, uint8_t endDelay) {
   for(uint8_t i = 0; i < 3; i++) {
     digitalWrite(ledOut, HIGH);
     delay(100);
