@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Eugene Kobiliatsky",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": -48.18,
+      "left": 215.77,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -29.6,
+      "left": 116.6,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 56.8,
+      "left": 116.6,
+      "rotate": 270,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 139.2,
+      "left": 124.25,
+      "rotate": 90,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -72,
+      "left": 124.25,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3.1", "r2:1", "red", [ "v-105.6", "h-67.25" ] ],
+    [ "r2:2", "led1:A", "red", [ "h0" ] ],
+    [ "led1:C", "esp:15", "black", [ "v47.6" ] ],
+    [ "esp:15", "led3:A", "red", [ "h0" ] ],
+    [ "led3:C", "r1:1", "black", [ "h0" ] ],
+    [ "esp:GND.1", "r1:2", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
